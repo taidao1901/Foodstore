@@ -12,12 +12,12 @@
 
     <!-- Site Metas -->
     <title>{% block title %} Freshshop - Ecommerce Bootstrap 4 HTML Template{% endblock %}</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="keywords" content="{% block keywords %} {% endblock keywords %}">
+    <meta name="description" content="{% block description %} {% endblock description %}">
+
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="'{% static 'images/favicon.ico' %}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}">
 
     <!-- Bootstrap CSS -->
@@ -112,7 +112,7 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" class="logo" alt=""></a>
+                    <a class="navbar-brand" href="index.html"><img src="{% static 'images/logo.png' %}" class="logo" alt=""></a>
                 </div>
                 <!-- End Header Navigation -->
 
@@ -159,17 +159,17 @@
                 <li class="cart-box">
                     <ul class="cart-list">
                         <li>
-                            <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
+                            <a href="#" class="photo"><img src="{% static 'images/img-pro-01.jpg' %} " class="cart-thumb" alt="" /></a>
                             <h6><a href="#">Delica omtantur </a></h6>
                             <p>1x - <span class="price">$80.00</span></p>
                         </li>
                         <li>
-                            <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
+                            <a href="#" class="photo"><img src="{% static 'images/img-pro-02.jpg' %} " class="cart-thumb" alt="" /></a>
                             <h6><a href="#">Omnes ocurreret</a></h6>
                             <p>1x - <span class="price">$60.00</span></p>
                         </li>
                         <li>
-                            <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
+                            <a href="#" class="photo"><img src="{% static 'images/img-pro-03.jpg' %} " class="cart-thumb" alt="" /></a>
                             <h6><a href="#">Agam facilisis</a></h6>
                             <p>1x - <span class="price">$40.00</span></p>
                         </li>
@@ -205,10 +205,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2>My Account</h2>
+                    <h2>{% block Titlebox %} {% endblock Titlebox %} </h2>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                        <li class="breadcrumb-item active">My Account</li>
+                        <li class="breadcrumb-item active">{% block btn_active %} {% endblock btn_active %}</li>
                     </ul>
                 </div>
             </div>
@@ -235,6 +235,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="item">
                 <div class="ins-inner-box">
                     <img src="{% static 'images/instagram-img-02.jpg' %}" alt="" />
@@ -421,7 +422,6 @@
     <script src="{% static 'js/jquery.nicescroll.min.js' %}"></script>
     <script src="{% static 'js/form-validator.min.js' %}"></script>
     <script src="{% static 'js/contact-form-script.js' %}"></script>
-    <script src="{% static 'js/custom.js' %}"></script>
-               
+    <script src="{% static 'js/custom.js' %}"></script>       
 </body>
 </html>
