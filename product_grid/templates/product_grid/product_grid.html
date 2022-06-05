@@ -6,7 +6,12 @@
 {% block title %}
     Foodshop - Tất cả sản phẩm
 {% endblock title %}
-
+{% block Titlebox %} 
+    {{title| title}}
+{% endblock Titlebox %}
+{% block btn_active %}
+    Sản phẩm
+{% endblock btn_active %}
 {% block body %}
        
         <!-- Start Shop Page  -->
@@ -18,16 +23,16 @@
                             <div class="product-item-filter row">
                                 <div class="col-12 col-sm-8 text-center text-sm-left">
                                     <div class="toolbar-sorter-right">
-                                        <span>Sort by </span>
+                                        <span>Sắp xếp</span>
                                         <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                                        <option data-display="Select">Nothing</option>
-                                        <option value="1">Popularity</option>
-                                        <option value="2">High Price → High Price</option>
-                                        <option value="3">Low Price → High Price</option>
-                                        <option value="4">Best Selling</option>
+                                        <option data-display="Select">Tất cả</option>
+                                        <option style="display: none;" value="1">Phổ biến</option>
+                                        <option value="2">Giá từ Cao → Thấp</option>
+                                        <option value="3">Giá từ Thấp → Cao</option>
+                                        <option style="display: none;" value="4">Best Selling</option>
                                     </select>
                                     </div>
-                                    <p>Showing all 4 results</p>
+                                    <p>Hiển thị tất cả {{products|length}} kết quả</p>
                                 </div>
                                 <div class="col-12 col-sm-4 text-center text-sm-right">
                                     <ul class="nav nav-tabs ml-auto">
@@ -53,7 +58,7 @@
                                                                     <div class="type-lb">
                                                                         <p class="sale">Sale</p>
                                                                     </div>
-                                                                    <img src="{{product.image}}" class="img-fluid" alt="Image">
+                                                                    <img src="{{product.images.0}}" class="img-fluid" alt="Image">
                                                                     <div class="mask-icon">
                                                                         <ul>
                                                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="Xem"><i class="fas fa-eye"></i></a></li>
@@ -63,10 +68,12 @@
                                                                         <a class="cart" href="#">Thêm vào giỏ hàng</a>
                                                                     </div>
                                                                 </div>
-                                                                <div class="why-text">
-                                                                    <h4>{{product.product.name|title}}</h4>
-                                                                    <h5> {{product.product.price|floatformat:"0"}}đ</h5>
-                                                                </div>
+                                                                <a href="facebook.com.vn">
+                                                                    <div class="why-text">
+                                                                        <h4>{{product.name|title}}</h4>
+                                                                        <h5> {{product.price|floatformat:"0"}}đ</h5>
+                                                                    </div>
+                                                                </a>
                                                             </div>
                                                         </div>                                                                                             
                                             {% endfor %}
@@ -272,7 +279,41 @@
                                         </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="list-view">
-                                        <div class="list-view-box">
+                                        
+                                        {% for product in products %}
+                                            <div class="list-view-box">
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                        <div class="products-single fix">
+                                                            <div class="box-img-hover">
+                                                                <div class="type-lb">
+                                                                    <p class="new">New</p>
+                                                                </div>
+                                                                <img src="{{product.images.0}}" class="img-fluid" alt="Image">
+                                                                <div class="mask-icon">
+                                                                    <ul>
+                                                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
+                                                                        <li><a style= "display: none ;" href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                                                    </ul>
+        
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
+                                                        <div class="why-text full-width">
+                                                            <h4>{{product.name|title}}</h4>
+                                                            <h5>{{product.price|floatformat:"0"}}đ</h5>
+                                                            <p>{{product.description}}</p>
+                                                            <a class="btn hvr-hover" href="#">Add to Cart</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                            
+                                        <!-- <div class="list-view-box">
                                             <div class="row">
                                                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                                     <div class="products-single fix">
@@ -367,7 +408,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -386,7 +427,7 @@
                                     <h3>Danh mục sản phẩm</h3>
                                 </div>
                                 <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
-                                    <div class="list-group-collapse sub-men">
+                                    <!-- <div class="list-group-collapse sub-men">
                                         <a class="list-group-item list-group-item-action" href="#sub-men1" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">Fruits & Drinks <small class="text-muted">(100)</small>
                                     </a>
                                         <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
@@ -410,21 +451,22 @@
                                                 <a href="#" class="list-group-item list-group-item-action">Vegetables 3 <small class="text-muted">(20)</small></a>
                                             </div>
                                         </div>
-                                    </div>
-                                    <a href="#" class="list-group-item list-group-item-action"> Grocery  <small class="text-muted">(150) </small></a>
-                                    <a href="#" class="list-group-item list-group-item-action"> Grocery <small class="text-muted">(11)</small></a>
-                                    <a href="#" class="list-group-item list-group-item-action"> Grocery <small class="text-muted">(22)</small></a>
+                                    </div> -->
+                                    <!-- List categories-->
+                                    {% for category in categories  %}
+                                        <a href="#" class="list-group-item list-group-item-action">{{category.name|title}}</a>                                     
+                                    {% endfor %}   
                                 </div>
                             </div>
                             <div class="filter-price-left">
                                 <div class="title-left">
-                                    <h3>Price</h3>
+                                    <h3>Bộ lọc</h3>
                                 </div>
                                 <div class="price-box-slider">
                                     <div id="slider-range"></div>
                                     <p>
                                         <input type="text" id="amount" readonly style="border:0; color:#fbb714; font-weight:bold;">
-                                        <button class="btn hvr-hover" type="submit">Filter</button>
+                                        <button class="btn hvr-hover" type="submit">Lọc</button>
                                     </p>
                                 </div>
                             </div>

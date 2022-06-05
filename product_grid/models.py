@@ -19,12 +19,12 @@ class Products(models.Model):
     description = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
     keyword = models.CharField(max_length=300)
-    categories = models.ManyToManyField(Categories)
+    categories = models.ManyToManyField(Categories,related_name='product_cate')
 
 
 class ProductImage(models.Model):
     image = models.ImageField(upload_to='images/products')
-    product= models.ForeignKey(Products,on_delete=models.CASCADE)
+    product= models.ForeignKey(Products,on_delete=models.CASCADE, related_name='product_image')
 
     
 

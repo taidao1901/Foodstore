@@ -24,7 +24,7 @@ urlpatterns = [
     path('sanpham/',include('product_grid.urls')),
     path('gioithieu/', include('about_us.urls')),
     path('thanhtoan/',include('checkout.urls')),
-    path('chitietsanpham', include('product_detail.urls')),
+    path('chitietsanpham/', include('product_detail.urls')),
     path('giohang/', include('cart.urls')),
     path('taikhoan/', include('account.urls')),
-]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+]
