@@ -68,7 +68,7 @@
                                                                         <a class="cart" href="#">Thêm vào giỏ hàng</a>
                                                                     </div>
                                                                 </div>
-                                                                <a href="facebook.com.vn">
+                                                                <a href="{% url 'product_detail:prod_detail' product.slug %}">
                                                                     <div class="why-text">
                                                                         <h4>{{product.name|title}}</h4>
                                                                         <h5> {{product.price|floatformat:"0"}}đ</h5>
@@ -302,12 +302,15 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
-                                                        <div class="why-text full-width">
-                                                            <h4>{{product.name|title}}</h4>
-                                                            <h5>{{product.price|floatformat:"0"}}đ</h5>
-                                                            <p>{{product.description}}</p>
-                                                            <a class="btn hvr-hover" href="#">Add to Cart</a>
-                                                        </div>
+                                                            <div class="why-text full-width">
+                                                                <a  href="{% url 'product_detail:prod_detail' product.slug %}"> 
+                                                                    <h4>{{product.name|title}}</h4>
+                                                                </a>
+                                                                <h5>{{product.price|floatformat:"0"}}đ</h5>
+                                                                <p>{{product.description}}</p>
+                                                                <a class="btn hvr-hover" href="#">Thêm vào giỏ hàng</a>   
+                                                            </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -454,7 +457,7 @@
                                     </div> -->
                                     <!-- List categories-->
                                     {% for category in categories  %}
-                                        <a href="#" class="list-group-item list-group-item-action">{{category.name|title}}</a>                                     
+                                        <a href="{% url 'product_grid:product_grid' category.slug %}" class="list-group-item list-group-item-action">{{category.name|title}}</a>                                     
                                     {% endfor %}   
                                 </div>
                             </div>

@@ -17,8 +17,12 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import include,path
 from django.conf.urls.static import static
+from django.views.generic.base import RedirectView
+
+from product_detail.views import product_detail
 
 urlpatterns = [
+    path('', RedirectView.as_view(url='/trangchu')),
     path('admin/', admin.site.urls),
     path('trangchu/',include('home.urls')),
     path('sanpham/',include('product_grid.urls')),
