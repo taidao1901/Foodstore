@@ -1,7 +1,6 @@
 from pyexpat import model
 from unicodedata import category
 from django.db import models
-from matplotlib import image
 from django.template.defaultfilters import slugify
 from django.contrib.contenttypes.fields import GenericForeignKey
 
